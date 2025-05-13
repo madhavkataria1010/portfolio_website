@@ -1,14 +1,13 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
+import type { PageProps } from '../../../../.next/types/app/blog/[slug]/page';
 import { getPostBySlug, getAllPostSlugs } from '@/lib/blog';
 import { format } from 'date-fns';
 import { CalendarDays, Tag } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 
-type Props = {
-  params: { slug: string };
-};
+type Props = PageProps;
 
 export async function generateMetadata(
   { params }: Props,
