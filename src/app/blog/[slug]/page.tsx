@@ -7,10 +7,16 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 
 export async function generateMetadata(
-  { params }: { params: { slug: string } },
+  { params }: { params: { slug: string | string[] | undefined } },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+  // Normalize slug to string
+  const rawSlug = params.slug;
+  const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
+  if (!slug) {
+    return { title: 'Post Not Found' };
+  }
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return {
@@ -40,9 +46,15 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPostPage(
-  { params }: { params: { slug: string } }
+  { params }: { params: { slug: string | string[] | undefined } }
 ) {
-  const post = await getPostBySlug(params.slug);
+  // Normalize slug to string
+  const rawSlug = params.slug;
+  const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
+  if (!slug) {
+    notFound();
+  }
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
