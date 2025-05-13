@@ -68,8 +68,10 @@ type RevalidateRange<T> = T extends { revalidate: any } ? NonNegative<T['revalid
 type OmitWithTag<T, K extends keyof any, _M> = Omit<T, K>
 type Diff<Base, T extends Base, Message extends string = ''> = 0 extends (1 & T) ? {} : OmitWithTag<T, keyof Base, Message>
 
-type FirstArg<T extends Function> = T extends (...args: [infer T, any]) => any ? unknown extends T ? any : T : never
-type SecondArg<T extends Function> = T extends (...args: [any, infer T]) => any ? unknown extends T ? any : T : never
+// Extract the first argument type of a function, supporting functions with one or more parameters
+type FirstArg<T extends Function> = T extends (arg: infer U, ...args: any[]) => any ? unknown extends U ? any : U : never
+// Extract the second argument type of a function
+type SecondArg<T extends Function> = T extends (first: any, arg: infer U, ...args: any[]) => any ? unknown extends U ? any : U : never
 type MaybeField<T, K extends string> = T extends { [k in K]: infer G } ? G extends Function ? G : never : never
 
 
