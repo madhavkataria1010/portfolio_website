@@ -6,7 +6,10 @@ import { CalendarDays, Tag } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 
-export async function generateMetadata({ params }, parent) {
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
 
   if (!post) {
@@ -36,7 +39,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPostPage({ params }) {
+export default async function BlogPostPage(
+  { params }: { params: { slug: string } }
+) {
   const post = await getPostBySlug(params.slug);
 
   if (!post) {
