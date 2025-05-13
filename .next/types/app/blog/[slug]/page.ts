@@ -52,12 +52,12 @@ if ('generateStaticParams' in entry) {
 }
 
 export interface PageProps {
-  params?: SegmentParams
+  params: SegmentParams<{ slug: string }>
   searchParams?: any
 }
 export interface LayoutProps {
   children?: React.ReactNode
-  params?: SegmentParams
+  params: SegmentParams<{ slug: string }>
 }
 
 // =============
