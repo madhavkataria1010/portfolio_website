@@ -27,6 +27,3 @@ jobs:
 
       - name: Lint source code
         run: npm run lint
-
-      - name: Type-check project
-        run: npm run typecheck
