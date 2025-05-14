@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Github, Linkedin, Mail, FileText } from 'lucide-react';
+import { Github, Linkedin, Mail, FileText, Twitter, Instagram, XIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/section-heading';
@@ -24,9 +24,7 @@ export default function AboutMeSection() {
           </div>
           <div className="md:col-span-2 text-center md:text-left">
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Hello! I'm a passionate software developer with a knack for creating elegant and efficient solutions. 
-              My journey in tech has been driven by a love for learning and a desire to build impactful applications. 
-              I specialize in full-stack development, with a strong focus on modern JavaScript frameworks like Next.js and React.
+              Hi! I'm am Madhav Kataria, a passionate software engineer and AI enthusiast. Pre-Final year undergraduate at IIT Jodhpur, with a strong interest in machine learning, MLOps, and building impactful tech products. I love working at the intersection of software engineering and AI, where I can turn cutting-edge research into practical, scalable solutions.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying a good book. 
@@ -34,8 +32,8 @@ export default function AboutMeSection() {
             </p>
             <div className="flex flex-wrap justify-center md:justify-start gap-4">
               <Button asChild variant="default">
-                <Link href="#contact">
-                  <Mail className="mr-2 h-5 w-5" /> Get in Touch
+                <Link href="/contact">
+                  <Mail className="mr-2 h-5 w-5" /> Contact
                 </Link>
               </Button>
               <Button asChild variant="outline">
@@ -45,14 +43,20 @@ export default function AboutMeSection() {
               </Button>
             </div>
              <div className="mt-8 flex justify-center md:justify-start space-x-6">
-              <Link href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+              <Link href="mailto:b23ch1025@iitj.ac.in" aria-label="Email Me">
+                <Mail className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
+              </Link>
+              <Link href="https://github.com/madhavkataria1010" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
                 <Github className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
               </Link>
-              <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+              <Link href="https://www.linkedin.com/in/madhavkataria/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
                 <Linkedin className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
               </Link>
-              <Link href="mailto:your.email@example.com" aria-label="Email Me">
-                <Mail className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
+              <Link href="https://x.com/madhav_kataria" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
+                <Twitter className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
+              </Link>
+              <Link href="https://instagram.com/madhavkataria_" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
+                <Instagram className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
               </Link>
             </div>
           </div>

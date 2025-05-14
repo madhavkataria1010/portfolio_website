@@ -17,7 +17,7 @@ const mainPageNavLinks = [
   { href: '#projects', label: 'Projects' },
   { href: '#research', label: 'Research' },
   { href: '/blog', label: 'Blog' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 const otherPageNavLinks = [
@@ -34,6 +34,13 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentNavLinks, setCurrentNavLinks] = useState(mainPageNavLinks);
   const [currentHash, setCurrentHash] = useState('');
+
+  const [mounted, setMounted] = useState(false);
+
+  // Track when mounted to avoid SSR/client mismatch on theme
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window !== 'undefined') {
@@ -112,7 +119,8 @@ export default function Header() {
             className="ml-4 p-2 rounded hover:bg-accent transition-colors"
             type="button"
           >
-            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            {mounted && (theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />)}
+            {!mounted && <Moon className="h-5 w-5" />}
           </button>
         </nav>
         <div className="md:hidden flex items-center gap-2">
@@ -122,7 +130,8 @@ export default function Header() {
             className="p-2 rounded hover:bg-accent transition-colors"
             type="button"
           >
-            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            {mounted && (theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />)}
+            {!mounted && <Moon className="h-5 w-5" />}
           </button>
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
