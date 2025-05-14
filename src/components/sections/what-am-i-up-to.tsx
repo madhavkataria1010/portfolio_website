@@ -1,4 +1,5 @@
-import { Cpu, Laptop, Youtube } from 'lucide-react';
+import { Book, Cpu, Laptop, Youtube } from 'lucide-react';
+import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { SectionHeading } from '@/components/section-heading';
 
@@ -8,41 +9,47 @@ export default function WhatAmIUpToSection() {
       <div className="container mx-auto px-4">
         <SectionHeading>What am I up to?</SectionHeading>
         <div className="mt-10 grid gap-8 grid-cols-1 md:grid-cols-3">
-          <Card className="p-6 shadow-lg">
-            <div className="flex justify-center mb-4">
-              <Cpu className="h-12 w-12 text-primary" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-center">AI & Robotics Research</h3>
-            <CardContent>
-              <p className="text-center text-muted-foreground">
-                Exploring the frontiers of robotic intelligence and AI perception as an undergraduate researcher with the Scene Representation group.
-              </p>
-            </CardContent>
-          </Card>
+          <Link href="#research">
+            <Card className="p-6 shadow-lg group transition-transform transform hover:-translate-y-1 hover:shadow-xl cursor-pointer">
+              <div className="flex justify-center mb-4">
+                <Cpu className="h-12 w-12 text-primary transition-colors group-hover:text-teal-500" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-center group-hover:text-teal-500">AI Research</h3>
+              <CardContent>
+                <p className="text-center text-muted-foreground">
+                  Exploring the frontiers of artificial intelligence, focusing on perception and intelligent systems as an undergraduate researcher.
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
 
-          <Card className="p-6 shadow-lg">
-            <div className="flex justify-center mb-4">
-              <Laptop className="h-12 w-12 text-primary" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-center">Building Software</h3>
-            <CardContent>
-              <p className="text-center text-muted-foreground">
-                I enjoy building software products that solve everyday problems. Check out some of my favorites!
-              </p>
-            </CardContent>
-          </Card>
+          <Link href="#projects">
+            <Card className="p-6 shadow-lg group transition-transform transform hover:-translate-y-1 hover:shadow-xl cursor-pointer">
+              <div className="flex justify-center mb-4">
+                <Laptop className="h-12 w-12 text-primary transition-colors group-hover:text-teal-500" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-center group-hover:text-teal-500">Building Software</h3>
+              <CardContent>
+                <p className="text-center text-muted-foreground">
+                  I enjoy building software products that solve everyday problems. Check out some of my favorites!
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
 
-          <Card className="p-6 shadow-lg">
-            <div className="flex justify-center mb-4">
-              <Youtube className="h-12 w-12 text-primary" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-center">Youtube</h3>
-            <CardContent>
-              <p className="text-center text-muted-foreground">
-                Shedding light on my tech journey at MIT and beyond through videos. Built an audience with over 465,000 views and 8,400+ subscribers.
-              </p>
-            </CardContent>
-          </Card>
+          <Link href="/blog">
+            <Card className="p-6 shadow-lg group transition-transform transform hover:-translate-y-1 hover:shadow-xl cursor-pointer">
+              <div className="flex justify-center mb-4">
+                <Book className="h-12 w-12 text-primary transition-colors group-hover:text-teal-500" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-center group-hover:text-teal-500">Books</h3>
+              <CardContent>
+                <p className="text-center text-muted-foreground">
+                  Reads some books 
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </div>
     </section>

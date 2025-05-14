@@ -46,12 +46,6 @@ export default function ResearchSection() {
             </Card>
           ))}
         </div>
-        <div className="mt-12 text-center">
-          <p className="text-muted-foreground">
-            For a detailed list of publications and ongoing projects, please refer to my academic profiles or contact me directly.
-          </p>
-          {/* Potential links to Google Scholar, ResearchGate, etc. can be added here */}
-        </div>
       </div>
     </section>
   );

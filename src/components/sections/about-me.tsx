@@ -55,9 +55,9 @@ export default function AboutMeSection() {
               <Link href="https://x.com/madhav_kataria" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
                 <Twitter className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
               </Link>
-              <Link href="https://instagram.com/madhavkataria_" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
+              {/* <Link href="https://instagram.com/madhavkataria_" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
                 <Instagram className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

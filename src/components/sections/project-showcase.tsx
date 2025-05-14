@@ -5,7 +5,7 @@ import { SectionHeading } from '@/components/section-heading';
 export default function ProjectShowcaseSection() {
   return (
     <section id="projects" className="py-12 md:py-20 scroll-mt-20">
-      <SectionHeading>Featured Projects</SectionHeading>
+      <SectionHeading>Software I’ve Built</SectionHeading>
       <p className="mt-4 mb-10 text-lg text-center text-muted-foreground max-w-2xl mx-auto">
         Here are some of the projects I'm proud to have worked on. Explore them to see my skills in action.
       </p>

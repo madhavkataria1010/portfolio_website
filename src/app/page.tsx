@@ -17,12 +17,9 @@ export default function HomePage() {
       <WhatAmIUpToSection />
       <Separator className="my-8 md:my-12" />
       <ProjectShowcaseSection />
-      <Separator className="my-8 md:my-12" />
-      <div className="text-center">
         <Button asChild>
           <Link href="/projects">View All Projects</Link>
         </Button>
-      </div>
       <Separator className="my-8 md:my-12" />
       <ResearchSection />
     </div>
