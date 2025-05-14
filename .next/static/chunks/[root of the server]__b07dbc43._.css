@@ -1670,6 +1670,14 @@ h1, h2, h3, h4, h5, h6 {
   height: 100svh;
 }
 
+.h-60 {
+  height: 15rem;
+}
+
+.h-64 {
+  height: 16rem;
+}
+
 .max-h-96 {
   max-height: 24rem;
 }
@@ -1780,6 +1788,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-64 {
+  width: 16rem;
 }
 
 .min-w-0 {
@@ -2047,6 +2059,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .overflow-auto {
   overflow: auto;
 }
@@ -2265,6 +2283,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .fill-current {
   fill: currentColor;
+}
+
+.object-cover {
+  object-fit: cover;
 }
 
 .p-0 {
@@ -4807,12 +4829,20 @@ h1, h2, h3, h4, h5, h6 {
     height: 16rem;
   }
 
+  .md\:h-80 {
+    height: 20rem;
+  }
+
   .md\:w-64 {
     width: 16rem;
   }
 
   .md\:w-auto {
     width: auto;
+  }
+
+  .md\:w-80 {
+    width: 20rem;
   }
 
   .md\:max-w-\[420px\] {

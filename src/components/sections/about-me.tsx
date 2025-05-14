@@ -11,14 +11,13 @@ export default function AboutMeSection() {
         <SectionHeading>About Me</SectionHeading>
         <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12 items-center">
           <div className="md:col-span-1 flex justify-center">
-            <div className="relative h-48 w-48 md:h-64 md:w-64 rounded-full overflow-hidden shadow-xl border-4 border-card">
+            <div className="relative h-64 w-64 md:h-80 md:w-80 rounded-lg overflow-hidden shadow-xl border-4 border-card">
               <Image
-                src="https://picsum.photos/seed/profile/300/300"
+                src="/images/others/profile.jpeg"
                 alt="Profile Photo"
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="rounded-lg object-cover"
                 data-ai-hint="professional portrait"
-                className="rounded-full"
               />
             </div>
           </div>
@@ -37,8 +36,8 @@ export default function AboutMeSection() {
                 </Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                   <FileText className="mr-2 h-5 w-5" /> View Resume
+                <Link href="/CV.pdf" target="_blank" rel="noopener noreferrer">
+                   <FileText className="mr-2 h-5 w-5" /> View CV
                 </Link>
               </Button>
             </div>
