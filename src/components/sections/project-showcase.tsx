@@ -3,6 +3,8 @@ import { projects } from '@/lib/data';
 import { SectionHeading } from '@/components/section-heading';
 
 export default function ProjectShowcaseSection() {
+  // Sort by rank and take top 6
+  const topProjects = [...projects].sort((a, b) => a.rank - b.rank).slice(0, 6);
   return (
     <section id="projects" className="py-12 md:py-20 scroll-mt-20">
       <SectionHeading>Software I’ve Built</SectionHeading>
@@ -10,7 +12,7 @@ export default function ProjectShowcaseSection() {
         Here are some of the projects I'm proud to have worked on. Explore them to see my skills in action.
       </p>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-        {projects.map((project) => (
+        {topProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>
