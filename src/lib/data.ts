@@ -37,12 +37,12 @@ export const projects: Project[] = [
 
   { id: '4',
     rank: 4,
-    title: 'CNN in C',
-    description: 'Built an AI that spots fake images and explains why — even in blurry 32×32 pixels. Combined smart CNNs with a vision-language model to detect artifacts and reveal the truth behind AI-generated visuals.',
+    title: 'DeepFusion-C',
+    description: 'DeepFusion-C is a hand-optimized C implementation of a four-layer CNN for MNIST digit recognition, leveraging SIMD intrinsics and OpenMP to deliver sub-millisecond, >99.2%-accurate inference with detailed latency, throughput and memory profiling.',
     imageUrl: '/images/projects/mnist.png',
     imageHint: 'AI',
     githubLink: 'https://github.com/madhavkataria1010/',
-    tags: ['C', 'CNN', 'MNIST', 'Model Addapter'],
+    tags: ['C', 'CNN', 'MNIST', 'Model Adapter', 'Custom IDX-format MNIST loader'],
   },
   // {
   //   id: '5',
