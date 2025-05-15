@@ -12,7 +12,7 @@ export default function AboutMeSection() {
         <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12 items-start">
           <div className="md:col-span-1 flex flex-col items-center">
             {/* lift the image column to align with the SectionHeading */}
-            <div className="-mt-16 md:-mt-20 flex flex-col items-center">
+            <div className="md:-mt-20 flex flex-col items-center">
               <div className="relative h-64 w-64 md:h-80 md:w-80 rounded-lg overflow-hidden shadow-xl border-4 border-card">
                 <Image
                   src="/images/others/gibli.jpeg"
