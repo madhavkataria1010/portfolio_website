@@ -10,18 +10,22 @@ import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <div className="space-y-16 md:space-y-24">
-      <HeroSection />
-      <AboutMeSection />
-      <Separator className="my-8 md:my-12" />
-      <WhatAmIUpToSection />
-      <Separator className="my-8 md:my-12" />
-      <ProjectShowcaseSection />
+    <>
+      <div className="space-y-16 md:space-y-24">
+        <HeroSection />
+        <AboutMeSection />
+        <Separator className="my-8 md:my-12" />
+        <WhatAmIUpToSection />
+        <Separator className="my-8 md:my-12" />
+        <ProjectShowcaseSection />
+      </div>
+      <div className="mt-3 md:mt-4 flex justify-center">
         <Button asChild>
           <Link href="/projects">View All Projects</Link>
         </Button>
+      </div>
       <Separator className="my-8 md:my-12" />
       <ResearchSection />
-    </div>
+    </>
   );
 }

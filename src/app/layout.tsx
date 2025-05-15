@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
+export const metadata: Metadata = { 
   title: 'Madhav Kataria',
-  description: 'A personal portfolio website built with Next.js.',
+  description: 'A website with 🌙',
 };
 
 export default function RootLayout({

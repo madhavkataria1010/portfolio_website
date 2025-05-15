@@ -11,7 +11,7 @@ export default function CallToActionSection() {
         <p className="mt-6 mb-10 text-lg text-muted-foreground max-w-xl mx-auto">
           Whether you have a specific project in mind or just want to explore possibilities, I'm here to help turn your ideas into reality.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-1">
           <Button size="lg" asChild className="shadow-lg hover:shadow-xl transition-shadow">
             <Link href="#contact">
               <MessageSquare className="mr-2 h-5 w-5" /> Let's Talk
