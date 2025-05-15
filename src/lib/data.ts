@@ -41,7 +41,7 @@ export const projects: Project[] = [
     description: 'DeepFusion-C is a hand-optimized C implementation of a four-layer CNN for MNIST digit recognition, leveraging SIMD intrinsics and OpenMP to deliver sub-millisecond, >99.2%-accurate inference with detailed latency, throughput and memory profiling.',
     imageUrl: '/images/projects/mnist.png',
     imageHint: 'AI',
-    githubLink: 'https://github.com/madhavkataria1010/',
+    githubLink: 'https://github.com/madhavkataria1010/ics_majorproject',
     tags: ['C', 'CNN', 'MNIST', 'Model Adapter', 'Custom IDX-format MNIST loader'],
   },
   // {
