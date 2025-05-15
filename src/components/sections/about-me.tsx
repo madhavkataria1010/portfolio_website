@@ -9,16 +9,37 @@ export default function AboutMeSection() {
     <section id="about" className="py-12 md:py-20 bg-secondary/30 rounded-lg scroll-mt-20">
       <div className="container mx-auto px-4">
         <SectionHeading>About Me</SectionHeading>
-        <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12 items-center">
-          <div className="md:col-span-1 flex justify-center">
-            <div className="relative h-64 w-64 md:h-80 md:w-80 rounded-lg overflow-hidden shadow-xl border-4 border-card">
-              <Image
-                src="/images/others/profile.jpeg"
-                alt="Profile Photo"
-                fill
-                className="rounded-lg object-cover"
-                data-ai-hint="professional portrait"
-              />
+        <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12 items-start">
+          <div className="md:col-span-1 flex flex-col items-center">
+            {/* lift the image column to align with the SectionHeading */}
+            <div className="-mt-16 md:-mt-20 flex flex-col items-center">
+              <div className="relative h-64 w-64 md:h-80 md:w-80 rounded-lg overflow-hidden shadow-xl border-4 border-card">
+                <Image
+                  src="/images/others/gibli.jpeg"
+                  // src="/images/others/profile.jpeg"
+                  alt="Profile Photo"
+                  fill
+                  className="rounded-lg object-cover"
+                  data-ai-hint="professional portrait"
+                />
+              </div>
+              <div className="mt-4 flex space-x-6">
+                <Link href="mailto:b23ch1025@iitj.ac.in" aria-label="Email Me">
+                  <Mail className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
+                </Link>
+                <Link href="https://github.com/madhavkataria1010" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                  <Github className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
+                </Link>
+                <Link href="https://www.linkedin.com/in/madhavkataria/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                  <Linkedin className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
+                </Link>
+                <Link href="https://x.com/madhav_kataria" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
+                  <Twitter className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
+                </Link>
+                <Link href="https://instagram.com/madhavkataria_" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
+                  <Instagram className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
+                </Link>
+              </div>
             </div>
           </div>
           <div className="md:col-span-2 text-center md:text-left">
@@ -41,23 +62,7 @@ export default function AboutMeSection() {
                 </Link>
               </Button>
             </div>
-             <div className="mt-8 flex justify-center md:justify-start space-x-6">
-              <Link href="mailto:b23ch1025@iitj.ac.in" aria-label="Email Me">
-                <Mail className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
-              </Link>
-              <Link href="https://github.com/madhavkataria1010" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                <Github className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
-              </Link>
-              <Link href="https://www.linkedin.com/in/madhavkataria/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                <Linkedin className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
-              </Link>
-              <Link href="https://x.com/madhav_kataria" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
-                <Twitter className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
-              </Link>
-              {/* <Link href="https://instagram.com/madhavkataria_" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
-                <Instagram className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
-              </Link> */}
-            </div>
+            {/* Social icons moved to left column */}
           </div>
         </div>
       </div>
