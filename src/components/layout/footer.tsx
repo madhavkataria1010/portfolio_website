@@ -9,9 +9,9 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} Madhav Kataria. All rights reserved.
         </p>
         <div className="flex items-center space-x-4">
-              <Link href="mailto:b23ch1025@iitj.ac.in" aria-label="Email Me">
+              {/* <Link href="mailto:b23ch1025@iitj.ac.in" aria-label="Email Me">
                 <Mail className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
-              </Link>
+              </Link> */}
               <Link href="https://github.com/madhavkataria1010" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
                 <Github className="h-7 w-7 text-muted-foreground hover:text-primary transition-colors" />
               </Link>
