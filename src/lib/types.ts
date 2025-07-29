@@ -10,6 +10,21 @@ export interface Project {
   tags: string[];
 }
 
+export interface Publication {
+  id: string;
+  title: string;
+  authors: string[];
+  venue: string;
+  year: number;
+  type: 'conference' | 'journal' | 'workshop' | 'preprint';
+  abstract: string;
+  paperUrl?: string;
+  websiteUrl?: string;
+  codeUrl?: string;
+  tags: string[];
+  highlight?: boolean; // For featured papers
+}
+
 export interface BlogFrontmatter {
   title: string;
   date: string; // YYYY-MM-DD

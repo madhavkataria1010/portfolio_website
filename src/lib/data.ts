@@ -1,4 +1,4 @@
-import type { Project } from './types';
+import type { Project, Publication } from './types';
 
 export const projects: Project[] = [
   {
@@ -73,7 +73,7 @@ export const projects: Project[] = [
   //   description: 'Leveraged Deep Q-Networks in PyTorch and TensorFlow to train Unity-based football agents from scratch, achieving a 40% boost in strategic decision-making accuracy and an 85% success rate in mastering complex gameplay strategies. A 3D Unity simulation visualizes learned agent behaviors and tactics.',
   //   imageUrl: '/images/projects/Deep_play.png',
   //   imageHint: 'team tasks',
-  //   liveLink: 'https://iitjacin-my.sharepoint.com/:v:/g/personal/b23ch1025_iitj_ac_in/EfligOT9Lx5Hv-_ocnB02QUBOBfVAQs8jebLLuMv0SR6_g?e=7QevEw',
+  //   liveLink: 'https://iitjacin-my.sharepoint.com/:v:/g/personal/b23ch1025_iitj_ac_in/EfligOT9Lx5Hv-_ocnB02QUBOBOBfVAQs8jebLLuMv0SR6_g?e=7QevEw',
   //   githubLink: 'https://iitjacin-my.sharepoint.com/personal/b23ch1025_iitj_ac_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fb23ch1025%5Fiitj%5Fac%5Fin%2FDocuments%2FSanta%20Project&ga=1',
   //   tags: ['Unity Engine', 'DQN', 'PPO', 'Blender', 'PyTorch', 'Reinforcement Learning'],
   // },
@@ -88,5 +88,20 @@ export const projects: Project[] = [
   //   githubLink: 'https://github.com/madhavkataria1010/InterIIT-Devrev',
   //   tags: ['Rrompt engineering', 'CoTs', 'Multi-task learning', 'Model distillation'],
   // },
+];
+
+export const publications: Publication[] = [
+  {
+    id: '1',
+    title: 'Re:Verse - Can Your VLM Read a Manga?',
+    authors: ['Aaditya Baranwal', 'Madhav Kataria', 'Naitik Agrawal', 'Yogesh Singh Rawat', 'Shruti Vyas'],
+    venue: '1st Workshop on Generative AI for Storytelling (AISTORY) @ ICCV 2025',
+    year: 2025,
+    type: 'workshop',
+    abstract: 'Current Vision Language Models (VLMs) demonstrate a critical gap between surface-level recognition and deep narrative reasoning when processing sequential visual storytelling. Through a comprehensive investigation of manga narrative understanding, we reveal that while recent large multimodal models excel at individual panel interpretation, they systematically fail at temporal causality and cross-panel cohesion—core requirements for coherent story comprehension. We introduce Re:Verse, a novel evaluation framework combining fine-grained multimodal annotation, cross-modal embedding analysis, and retrieval-augmented assessment to systematically characterize these limitations.',
+    websiteUrl: 'https://re-verse.vercel.app/',
+    tags: ['Vision Language Models', 'Manga', 'Narrative Understanding', 'Multimodal', 'Benchmark', 'Temporal Reasoning'],
+    highlight: true
+  }
 ];
 
