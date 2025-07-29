@@ -4,17 +4,18 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex items-center px-3 py-1 text-xs font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 glass border backdrop-blur-md hover:scale-105 will-change-transform",
   {
     variants: {
       variant: {
         default:
-          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+          "text-white border-white/30 bg-gradient-to-r from-primary/25 to-accent/25 hover:from-primary/35 hover:to-accent/35 shadow-md hover:shadow-lg",
         secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "text-white/85 border-white/20 bg-gradient-to-r from-white/15 to-white/8 hover:from-white/25 hover:to-white/15 shadow-sm hover:shadow-md",
         destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-        outline: "text-foreground",
+          "text-white border-red-500/40 bg-gradient-to-r from-red-500/25 to-red-600/25 hover:from-red-500/35 hover:to-red-600/35 shadow-md hover:shadow-lg",
+        outline: 
+          "text-white/75 hover:text-white border-white/40 hover:border-white/60 bg-white/8 hover:bg-white/15 shadow-sm hover:shadow-md",
       },
     },
     defaultVariants: {

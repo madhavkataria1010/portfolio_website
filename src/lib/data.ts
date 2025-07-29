@@ -48,7 +48,7 @@ export const projects: Project[] = [
     id: '5',
     rank: 5,
     title: 'RealmWeaver',
-    description: 'RealmWeaver is a cutting-edge 2D open-ended game that revolutionizes interactive storytelling through dynamic content generation. Leveraging the GEMINI API, the game creates unique NPCs, quests, locations, and items, ensuring no two gameplay experiences are alike.',
+    description: '🎮 RealmWeaver: Step into a world of endless possibilities! ✨ This 2D open-ended game redefines interactive storytelling with 🧙 dynamic NPCs, 🗺️ unique locations, 🏹 quests, and 🎁 items—all generated through the powerful GEMINI API. No two adventures are ever the same! 🌟',
     imageUrl: '/images/projects/Deep_play.png',
     imageHint: 'team tasks',
     githubLink: 'https://github.com/lakshyajain-0291/RealmWeaver',

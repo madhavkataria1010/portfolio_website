@@ -1,63 +1,69 @@
 'use client';
 
-import Link from 'next/link';
-import { Code2, Menu, Moon, Sun } from 'lucide-react'; // Using Code2 as a placeholder for a generic app icon
-import { Button } from '@/components/ui/button';
+import { useState, useEffect, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { useState, useEffect } from 'react';
+import { 
+  Menu, 
+  X, 
+  Github, 
+  Linkedin, 
+  Mail,
+  FileText,
+  // Removing theme-related icons
+} from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const mainPageNavLinks = [
   { href: '#about', label: 'About' },
   { href: '#projects', label: 'Projects' },
   { href: '#research', label: 'Research' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
+  { href: '#blog', label: 'Blog' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 const otherPageNavLinks = [
-  { href: '/#about', label: 'About' },
-  { href: '/#projects', label: 'Projects' },
-  { href: '/#research', label: 'Research' },
+  { href: '/', label: 'Home' },
+  { href: '/projects', label: 'Projects' },
   { href: '/blog', label: 'Blog' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact' },
 ];
-
 
 export default function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentNavLinks, setCurrentNavLinks] = useState(mainPageNavLinks);
   const [currentHash, setCurrentHash] = useState('');
-
+  const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Track when mounted to avoid SSR/client mismatch on theme
+  // Initialize component
   useEffect(() => {
     setMounted(true);
+    // Force dark theme on mount
+    const root = document.documentElement;
+    root.classList.remove('light');
+    root.classList.add('dark');
   }, []);
 
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
-    }
-    return 'light';
-  });
-
+  // Scroll effect for enhanced glass blur
   useEffect(() => {
-    if (pathname === '/') {
-      setCurrentNavLinks(mainPageNavLinks);
-    } else {
-      setCurrentNavLinks(otherPageNavLinks);
-    }
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Navigation links effect
+  useEffect(() => {
+    setCurrentNavLinks(pathname === '/' ? mainPageNavLinks : otherPageNavLinks);
   }, [pathname]);
 
-  // Track hash on client only
+  // Hash tracking
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setCurrentHash(window.location.hash);
@@ -67,19 +73,7 @@ export default function Header() {
     }
   }, []);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      document.documentElement.classList.remove('light', 'dark');
-      document.documentElement.classList.add(theme);
-      localStorage.setItem('theme', theme);
-    }
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
-
-  const handleLinkClick = (href: string) => {
+  const handleLinkClick = useCallback((href: string) => {
     setIsMobileMenuOpen(false);
     if (pathname === '/' && href.startsWith('#')) {
       const element = document.querySelector(href);
@@ -87,80 +81,132 @@ export default function Header() {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  };
-
+  }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-          <Code2 className="h-7 w-7 text-primary" />
-          <span className="text-2xl font-bold text-foreground">Madhav</span>
+    <header className={cn(
+      "fixed top-0 z-50 w-full transition-all duration-200 ease-out",
+      "glass-header border-b border-white/10",
+      scrolled 
+        ? "py-2 backdrop-blur-xl bg-white/5 dark:bg-black/5" 
+        : "py-4 backdrop-blur-lg bg-white/10 dark:bg-black/10"
+    )}>
+      <div className="container mx-auto flex h-16 items-center justify-between px-6">
+        {/* Logo */}
+        <Link 
+          href="/" 
+          className="flex items-center gap-2 font-bold text-2xl text-foreground hover:text-primary transition-colors duration-200 group"
+        >
+          <div className="relative">
+            <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+              Madhav Kataria
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-200 animate-pulse">
+              Madhav Kataria
+            </div>
+          </div>
         </Link>
-        <nav className="hidden md:flex items-center space-x-6">
-          {currentNavLinks.map((link) => (
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-1">
+          {currentNavLinks.map((link, index) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => handleLinkClick(link.href)}
               className={cn(
-                'text-sm font-medium text-muted-foreground transition-colors hover:text-primary',
-                (pathname === link.href || (pathname.startsWith('/blog') && link.href === '/blog') || (pathname === '/' && link.href === currentHash))
-                  ? 'text-primary'
-                  : 'text-muted-foreground'
+                "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 relative group glass-button",
+                "hover:text-primary hover:scale-105",
+                (pathname === '/' && currentHash === link.href) || 
+                (pathname !== '/' && pathname === link.href)
+                  ? "text-primary bg-primary/10" 
+                  : "text-foreground/80"
               )}
             >
               {link.label}
+              <div className={cn(
+                "absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 transition-all duration-200",
+                (pathname === '/' && currentHash === link.href) || 
+                (pathname !== '/' && pathname === link.href) && "opacity-100"
+              )} />
             </Link>
           ))}
-          <button
-            aria-label="Toggle dark mode"
-            onClick={toggleTheme}
-            className="ml-4 p-2 rounded hover:bg-accent transition-colors"
-            type="button"
-          >
-            {mounted && (theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />)}
-            {!mounted && <Moon className="h-5 w-5" />}
-          </button>
         </nav>
-        <div className="md:hidden flex items-center gap-2">
-          <button
-            aria-label="Toggle dark mode"
-            onClick={toggleTheme}
-            className="p-2 rounded hover:bg-accent transition-colors"
-            type="button"
-          >
-            {mounted && (theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />)}
-            {!mounted && <Moon className="h-5 w-5" />}
-          </button>
+        
+        {/* Mobile Navigation */}
+        <div className="md:hidden flex items-center gap-3">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
+              <Button variant="outline" size="icon" className="glass-button border-white/20">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
-              <div className="grid gap-4 py-6">
-                <Link href="/" className="flex items-center gap-2 px-4" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Code2 className="h-7 w-7 text-primary" />
-                  <span className="text-2xl font-bold text-foreground">Madhav Kataria</span>
-                </Link>
-                {currentNavLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={cn(
-                      'block px-4 py-2 text-lg font-medium hover:text-primary',
-                      (pathname === link.href || (pathname.startsWith('/blog') && link.href === '/blog') || (pathname === '/' && link.href === currentHash))
-                        ? 'text-primary'
-                        : 'text-muted-foreground'
-                    )}
-                    onClick={() => handleLinkClick(link.href)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+            <SheetContent side="right" className="glass border-white/20 backdrop-blur-xl">
+              <div className="flex flex-col gap-6 mt-8">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-lg font-semibold text-foreground">Navigation</h2>
+                </div>
+                
+                <nav className="flex flex-col gap-3">
+                  {currentNavLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => handleLinkClick(link.href)}
+                      className={cn(
+                        "px-4 py-3 rounded-lg text-left font-medium transition-all duration-200 glass-button",
+                        "hover:text-primary hover:bg-primary/5",
+                        (pathname === '/' && currentHash === link.href) || 
+                        (pathname !== '/' && pathname === link.href)
+                          ? "text-primary bg-primary/10" 
+                          : "text-foreground/80"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </nav>
+
+                <div className="border-t border-white/10 pt-6">
+                  <h3 className="text-sm font-medium text-foreground/60 mb-3">External Links</h3>
+                  <div className="flex flex-col gap-2">
+                    <Link
+                      href="https://github.com/madhavkataria"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-4 py-2 rounded-lg glass-button hover:text-primary transition-colors duration-200"
+                    >
+                      <Github className="h-4 w-4" />
+                      GitHub
+                    </Link>
+                    <Link
+                      href="https://linkedin.com/in/madhav-kataria"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-4 py-2 rounded-lg glass-button hover:text-primary transition-colors duration-200"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                      LinkedIn
+                    </Link>
+                    <Link
+                      href="/pdf/CV.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-4 py-2 rounded-lg glass-button hover:text-primary transition-colors duration-200"
+                    >
+                      <FileText className="h-4 w-4" />
+                      Resume
+                    </Link>
+                    <Link
+                      href="mailto:madhav.kataria@outlook.com"
+                      className="flex items-center gap-3 px-4 py-2 rounded-lg glass-button hover:text-primary transition-colors duration-200"
+                    >
+                      <Mail className="h-4 w-4" />
+                      Email
+                    </Link>
+                  </div>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
